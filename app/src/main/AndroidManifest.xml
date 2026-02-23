@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.simplefilesaver">
+
+    <!-- 允许写外部存储（Android 10及以下需要；11+使用分区存储，此权限已失效但为了兼容保留） -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" 
+        android:maxSdkVersion="29" />
+    <!-- 允许读取外部存储（用于接收分享的文件） -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:icon="@mipmap-xhdpi/ic_launcher"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="保存分享"
+        android:theme="@style/Theme.AppCompat.Light">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
